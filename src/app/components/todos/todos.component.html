@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="p-3 border bg-light">
+        <h4 class="lead">Add Todo Item</h4>
+        <div class="list-group list-group-flush border-bottom scrollarea">
+          <app-add-todo-item
+            (onTodoItemAdd)="addTodo($event)"
+          ></app-add-todo-item>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="p-3 border bg-light">
+        <div
+          class="
+            d-flex
+            flex-column
+            align-items-stretch
+            flex-shrink-0
+            bg-white
+            ScrollStyle
+          "
+        >
+          <h4 class="lead">Todo List</h4>
+          <div *ngIf="this.todos.length === 0; else elseBlock">
+            No todos to display!
+          </div>
+          <ng-template #elseBlock>
+            <div
+              class="list-group list-group-flush border-bottom scrollarea"
+              *ngFor="let todo of todos"
+            >
+              <app-todo-item
+                [todo]="todo"
+                (onTodoItemDeleteEvent)="deleteTodoItem($event)"
+                (onTodoItemDoneEvent)="toggleTodoItem($event)"
+              ></app-todo-item>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

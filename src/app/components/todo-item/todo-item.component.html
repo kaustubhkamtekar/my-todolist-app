@@ -1,0 +1,30 @@
+<a
+  href="#"
+  class="list-group-item list-group-item-action py-3 lh-tight"
+  [attr.aria-current]="todo.active ? true : null"
+  [ngClass]="todo.active ? 'active' : ''"
+>
+  <div class="d-flex w-100 align-items-center justify-content-between">
+    <strong class="mb-1">{{ todo.title }} </strong>
+    <button class="btn btn-sm btn-danger" (click)="onDelClick(todo)">X</button>
+  </div>
+  <div class="col-10 mb-1 small">
+    {{ todo.desc }}
+  </div>
+  <div class="col-10 mb-1 small">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="chkdone_{{ todo.sno }}"
+        [checked]="todo.active"
+        (change)="onCheckChange(todo)"
+      />
+      <label class="form-check-label" for="chkdone_{{ todo.sno }}">
+        <div *ngIf="todo.active; else elseBlock">Done</div>
+        <ng-template #elseBlock>Mark as Done</ng-template>
+      </label>
+    </div>
+  </div>
+</a>

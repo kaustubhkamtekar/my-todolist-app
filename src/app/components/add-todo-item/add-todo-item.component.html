@@ -1,0 +1,33 @@
+<form class="mb-5" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      name="title"
+      [(ngModel)]="title"
+      id="title"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="desc" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="desc"
+      name="desc"
+      [(ngModel)]="desc"
+    />
+  </div>
+  <div class="mb-3 form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="reminder"
+      name="reminder"
+      [(ngModel)]="reminder"
+    />
+    <label class="form-check-label" for="reminder">Mark as done</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
